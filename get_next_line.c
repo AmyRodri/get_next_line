@@ -6,7 +6,7 @@
 /*   By: amyrodri <amyrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 11:17:07 by amyrodri          #+#    #+#             */
-/*   Updated: 2025/08/04 10:28:18 by amyrodri         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:42:00 by amyrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,29 +51,35 @@ char	*extract_line_and_stash(char *line, char **stash)
 	return (new_line);
 }
 
+void	*free_null(char *buffer, char *line)
+{
+	free(buffer);
+	free(line);
+	return (NULL);
+}
+
 char	*read_line(char *line, int fd)
 {
 	int			bytes;
 	char		*buffer;
 	char		*tmp;
 
+	if (!line)
+		line = ft_strdup("");
 	buffer = malloc (BUFFER_SIZE + 1);
-	if (!buffer)
-		return (NULL);
+	if (!buffer || !line)
+		return (free_null(buffer, line));
 	bytes = 1;
 	while (!new_line(line) && bytes > 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
-		if (bytes <= 0)
-			break ;
+		if (bytes == -1)
+			return (free_null(buffer, line));
 		buffer[bytes] = '\0';
 		tmp = ft_strjoin(line, buffer);
 		free(line);
 		if (!tmp)
-		{
-			return (NULL);
-			free(buffer);
-		}
+			return (free_null(buffer, line));
 		line = tmp;
 	}
 	free(buffer);
@@ -97,19 +103,12 @@ char	*get_next_line(int fd)
 		line = NULL;
 	line = read_line(line, fd);
 	if (!line)
-	{
-		free(stash);
-		return (stash = NULL);
-	}
+		return (free(stash), stash = NULL);
 	if (new_line(line))
 		line = extract_line_and_stash(line, &stash);
 	else
 		stash = NULL;
 	if (!line || *line == '\0')
-	{
-		free(line);
-		free(stash);
-		return (stash = NULL);
-	}
+		return (free(line), free(stash), stash = NULL);
 	return (line);
 }
