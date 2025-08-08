@@ -27,7 +27,7 @@ char *get_next_line(int fd);
 ```
 fd: File descriptor (arquivo, entrada padrão, etc).
 
-Retorna: a próxima linha (com \n se presente), ou NULL ao final do arquivo ou em erro.
+Retorna: a próxima **linha** (com `\n` se presente), ou `NULL` ao final do arquivo ou em **erro**.
 
 ## 🧠 Conceitos Trabalhados
 - 📚 Manipulação de arquivos (read)
@@ -84,7 +84,7 @@ make re
 Para excluir os executáveis e a biblioteca:
 
 ```bash
-make flcean
+make fclean
 ```
 
 ### Compilação manual
