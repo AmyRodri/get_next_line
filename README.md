@@ -70,23 +70,6 @@ int main(void)
 
 ## 🔧 Como Compilar
 
-### Usando o Makefile
-
-```bash
-make
-```
-Para recompilar do zero:
-
-```bash
-make re
-```
-
-Para excluir os executáveis e a biblioteca:
-
-```bash
-make fclean
-```
-
 ### Compilação manual
 (definindo o tamanho do buffer):
 
