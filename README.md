@@ -65,7 +65,6 @@ int main(void)
 | `get_next_line.c`      | Lógica principal da leitura linha por linha                           |
 | `get_next_line_utils.c`| Funções auxiliares (`ft_strlen`, `ft_strchr`, `ft_strjoin`, etc.)     |
 | `get_next_line.h`      | Header com protótipos, macros e includes necessários                   |
-| `Makefile`             | Facilita a compilação, recompilação e limpeza dos arquivos gerados     |
 
 
 ## 🔧 Como Compilar
