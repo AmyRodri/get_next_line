@@ -25,9 +25,9 @@ Recriar do zero a função `get_next_line` com as seguintes características:
 ```c
 char *get_next_line(int fd);
 ```
-fd: File descriptor (arquivo, entrada padrão, etc).
+`fd`: File descriptor (arquivo, entrada padrão, etc).
 
-Retorna: a próxima **linha** (com `\n` se presente), ou `NULL` ao final do arquivo ou em **erro**.
+`Retorna`: a próxima **linha** (com `\n` se presente), ou `NULL` ao final do arquivo ou em **erro**.
 
 ## 🧠 Conceitos Trabalhados
 - 📚 Manipulação de arquivos (read)
